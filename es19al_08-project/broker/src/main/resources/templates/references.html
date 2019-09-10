@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>References</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet"
+          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+    <script th:src="@{/webjars/jquery/3.1.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<div class="container">
+    <h2>
+        <!--SE QUISER METER AQUI UMA CENA PARA DAR O REFERENCE NUMBER E TAL-->
+        Welcome to the Reference List and Manager of Bulk
+    </h2>
+    <a class="btn btn-default pull-right" th:href="@{/brokers/{code}/bulks(code=${broker.code})}">Bulks</a> 
+    <br/>
+
+    <p class="text-danger" th:text="${error}">Error</p>
+    
+    <h3>List of References</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Hotel Name</th>
+            <th>Hotel Code</th>
+            <th>Room Number</th>
+            <th>Arrival</th>
+            <th>Departure</th>
+            <th>Price</th>
+            <th>Buyer NIF</th>
+            <th>Buyer IBAN</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reference: ${references}">
+            <td th:text="${reference.hotelName}"></td>
+              <td th:text="${reference.hotelCode}"></td>
+            <td th:text="${reference.roomNumber}"></td>
+            <td th:text="${reference.arrival}"></td>
+            <td th:text="${reference.departure}"></td>
+            <td th:text="${reference.price}"></td>
+            <td th:text="${reference.buyerNif}"></td>
+            <td th:text="${reference.buyerIban}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
